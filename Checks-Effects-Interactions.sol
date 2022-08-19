@@ -1,7 +1,12 @@
-function withdraw(uint withdrawAmount) public returns (uint){
+
+pragma solidity 0.7.5;
+contract Checks_Effects_Interactions {
+
+    function withdraw(uint withdrawAmount) public returns (uint){
+
 		
   		//Checks = verifications
-           	require(withdrawAmount <= balances[msg.sender]);
+        require(withdrawAmount <= balances[msg.sender]);
 	   		
   		//Effects = actions that will be executed, 
 		//in this case, subtract the value of the wallet/contract
@@ -12,4 +17,5 @@ function withdraw(uint withdrawAmount) public returns (uint){
   		msg.sender.call.value(withdrawAmount)("");
 
 		return balances[msg.sender];
+    }
 }
